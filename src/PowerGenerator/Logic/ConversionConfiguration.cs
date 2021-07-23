@@ -79,6 +79,7 @@ namespace Absa.Hire.Newbies.PowerConverter.Logic
             return null;
         }
 
+        #pragma warning disable S3928 // Parameter names used into ArgumentException constructors should match an existing one
         public void AddMapping([NotNull]IMapping mapping)
         {
             if (mapping == null)
@@ -111,5 +112,6 @@ namespace Absa.Hire.Newbies.PowerConverter.Logic
             _maps.Add(new SimplifiedMapping(mapping.Left, mapping.Right, mapping.ConvertToRight));
             _maps.Add(new SimplifiedMapping(mapping.Right, mapping.Left, mapping.ConvertToLeft));
         }
+        #pragma warning restore S3928 // Parameter names used into ArgumentException constructors should match an existing one
     }
 }

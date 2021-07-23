@@ -11,7 +11,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Absa.Hire.Newbies.Functions
 {
-    public class ConvertPylonV1
+    public sealed class ConvertPylonV1
     {
         internal ConvertPylonV1(ILogger logger = null, ITextConverter textConverter = null)
         {

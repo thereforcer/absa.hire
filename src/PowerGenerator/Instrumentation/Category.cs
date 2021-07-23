@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
+#pragma warning disable S4035
 namespace Absa.Hire.Newbies.PowerConverter
 {
     public abstract class Category : IEquatable<Category>
@@ -63,3 +64,4 @@ namespace Absa.Hire.Newbies.PowerConverter
         }
     }
 }
+#pragma warning restore S4035

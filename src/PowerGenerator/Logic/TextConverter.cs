@@ -15,14 +15,17 @@ namespace Absa.Hire.Newbies.PowerConverter.Logic
             _converter = converter;
         }
 
+        /// <exception cref="UnitNotFoundException"/>
+        /// <exception cref="MappingNotFoundException"/>
         public string Convert(string input, string expectedUnit)
         {
-            var (value, sourceUnit) = ParseInput(input);
+            var(value, sourceUnit) = ParseInput(input);
             var destinationUnit = _configuration.FindUnitByText(expectedUnit);
             var result = _converter.Convert(value, destinationUnit, sourceUnit);
             return $"{result.ToString(_configuration.CultureInfo)} {destinationUnit.UnitName}";
         }
 
+        /// <exception cref="UnitNotFoundException"/>
         private (decimal value, Unit unit) ParseInput(string input)
         {
             var tokens = input.Split(new[] {" "}, StringSplitOptions.RemoveEmptyEntries).ToList();

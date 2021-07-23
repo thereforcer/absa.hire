@@ -15,7 +15,7 @@ namespace Absa.Hire.Newbies.PowerConverter
 
         public decimal ConvertToLeft(decimal value)
         {
-            return value * 9 / 5 + 32;
+            return (value * 9 / 5) + 32;
         }
     }
 }

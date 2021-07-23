@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project>
   <PropertyGroup>
-    <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)CMG.AuditionProcessing.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)Absa.Hire.Newbies.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <!--TreatWarningsAsErrors>true</TreatWarningsAsErrors>-->
     <WarningsAsErrors />
   </PropertyGroup>
   <PropertyGroup>
-    <NoWarn>CS0618;CS1591;CA1710;CA1032;CA1035;CA1822;SA0001;S2699;CA1724;CA1716</NoWarn>
+    <NoWarn>CS0618;CS1591;CA1710;CA1032;CA1035;CA1822;SA0001;S2699;CA1724;CA1716;SA1604;S3904</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

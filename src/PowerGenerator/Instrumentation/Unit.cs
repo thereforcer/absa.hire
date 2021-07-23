@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
+#pragma warning disable S4035
 namespace Absa.Hire.Newbies.PowerConverter
 {
     public abstract class Unit : IEquatable<Unit>
@@ -68,6 +69,7 @@ namespace Absa.Hire.Newbies.PowerConverter
             {
                 return false;
             }
+
             return Equals((Unit) obj);
         }
 
@@ -80,3 +82,4 @@ namespace Absa.Hire.Newbies.PowerConverter
         }
     }
 }
+#pragma warning restore S4035

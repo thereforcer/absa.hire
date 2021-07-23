@@ -1,8 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\Absa.Hire.Newbies.props" />
-  <!--
   <Import Project="..\Analysis.props" />
-  -->
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>

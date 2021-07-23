@@ -103,10 +103,11 @@ namespace Absa.Hire.Newbies.PowerConverter.UnitTests
             // ARRANGE
 
             // ACT
-            UnitConvert.Settings.Conversion.AddMapping(new MilesToFeetMapping());
-            UnitConvert.Settings.Parser.AddUnit(new Mile());
-            UnitConvert.Settings.Parser.CultureInfo = new CultureInfo("cs-CZ");
-            var value = UnitConvert.Convert("1 mile", "km");
+            var settings = new UnitConvertSettings();
+            settings.Conversion.AddMapping(new MilesToFeetMapping());
+            settings.Parser.AddUnit(new Mile());
+            settings.Parser.CultureInfo = new CultureInfo("cs-CZ");
+            var value = UnitConvert.Convert("1 mile", "km", settings);
 
             // ASSERT
             Assert.Equal("1,609344 kilometer", value);
