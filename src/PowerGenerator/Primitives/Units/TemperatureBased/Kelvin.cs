@@ -4,17 +4,17 @@ using static Absa.Hire.Newbies.PowerConverter.WellknownCategories;
 
 // ReSharper disable UnusedMember.Global
 
-namespace Absa.Hire.Newbies.PowerConverter.Primitives.Units.ImperialUnits
+namespace Absa.Hire.Newbies.PowerConverter.Primitives.Units.TemperatureBased
 {
-    public sealed class Inch : Unit
+    public sealed class Kelvin : Unit
     {
-        public Inch() : base(Guid.Parse("0bed018f-a6e9-4c6f-bf58-8bbfb3957c5f"), "inch", Length)
+        public Kelvin() : base(Guid.Parse("bb203a86-b085-4d61-bd84-4f450bb0df22"), "kelvin", Temperature)
         {
         }
 
         protected override void RegisterOtherUnitName(IList<string> collection)
         {
-            collection.Add("inches");
+            collection.Add("K");
         }
     }
 }

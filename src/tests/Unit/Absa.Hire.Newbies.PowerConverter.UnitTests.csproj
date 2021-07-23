@@ -19,7 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Absa.Hire.Newbies\Absa.Hire.Newbies.PowerConverter.csproj" />
+    <ProjectReference Include="..\..\Functions\Absa.Hire.Newbies.Functions.csproj" />
+    <ProjectReference Include="..\..\PowerGenerator\Absa.Hire.Newbies.PowerConverter.csproj" />
   </ItemGroup>
 
 </Project>

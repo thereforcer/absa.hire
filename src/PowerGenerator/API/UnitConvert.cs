@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 
 // ReSharper disable UnusedMember.Global
 
-namespace Absa.Hire.Newbies.PowerConverter.API
+namespace Absa.Hire.Newbies.PowerConverter
 {
     public static class UnitConvert
     {

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using Absa.Hire.Newbies.PowerConverter.API;
 using Xunit;
 using static Absa.Hire.Newbies.PowerConverter.WellknownUnits;
 
@@ -74,7 +73,7 @@ namespace Absa.Hire.Newbies.PowerConverter.UnitTests
         }
 
         [Fact]
-        public void ConvertText_TaskExample_Ok()
+        public void ConvertText_TaskExample1_Ok()
         {
             // ARRANGE
             // ACT
@@ -84,6 +83,18 @@ namespace Absa.Hire.Newbies.PowerConverter.UnitTests
             // ASSERT
             Assert.StartsWith("3.28", result);
             Assert.EndsWith(" feet", result);
+        }
+
+        [Fact]
+        public void ConvertText_TaskExample2_Ok()
+        {
+            // ARRANGE
+            // ACT
+            UnitConvert.Settings.Parser.CultureInfo = CultureInfo.InvariantCulture;
+            var result = UnitConvert.Convert("3 kiloinches", "meter");
+
+            // ASSERT
+            Assert.Equal("76.2000 meter", result);
         }
 
         [Fact]
@@ -125,6 +136,30 @@ namespace Absa.Hire.Newbies.PowerConverter.UnitTests
             // ASSERT
             Assert.NotNull(exception);
             Assert.Equal("Value cannot be null. (Parameter 'expectedUnit')", exception.Message);
+        }
+
+        [Fact]
+        public void ConvertText_TaskExample3_Ok()
+        {
+            // ARRANGE
+            // ACT
+            UnitConvert.Settings.Parser.CultureInfo = CultureInfo.InvariantCulture;
+            var result = UnitConvert.Convert("1 MiB", "bytes");
+
+            // ASSERT
+            Assert.Equal("1048576 byte", result);
+        }
+
+        [Fact]
+        public void ConvertText_TaskExample4_Ok()
+        {
+            // ARRANGE
+            // ACT
+            UnitConvert.Settings.Parser.CultureInfo = CultureInfo.InvariantCulture;
+            var result = UnitConvert.Convert("1 K", "°F");
+
+            // ASSERT
+            Assert.Equal("-457.87 fahrenheit", result);
         }
     }
 }

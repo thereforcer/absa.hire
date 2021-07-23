@@ -37,4 +37,8 @@
     </AssemblyAttribute>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Instrumentation\DefaultConversions\Data\" />
+  </ItemGroup>
+
 </Project>

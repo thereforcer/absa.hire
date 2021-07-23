@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Absa.Hire.Newbies.PowerConverter.Logic
 {
-    internal sealed class TextConverter
+    internal sealed class TextConverter : ITextConverter
     {
         private readonly ParserConfiguration _configuration;
         private readonly IUnitConverter _converter;

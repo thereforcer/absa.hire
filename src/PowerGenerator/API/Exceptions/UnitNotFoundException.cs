@@ -2,14 +2,14 @@
 using System.Runtime.Serialization;
 using System.Security.Permissions;
 
-namespace Absa.Hire.Newbies.PowerConverter.API
+namespace Absa.Hire.Newbies.PowerConverter
 {
     [Serializable]
-    public sealed class UnknownUnitException : Exception
+    public sealed class UnitNotFoundException : Exception
     {
-        private const string ErrorMessage = "Unknown unit \"{0}\".";
+        private const string ErrorMessage = "Cannot find unit \"{0}\".";
 
-        internal UnknownUnitException(string unitName) : base(string.Format(ErrorMessage, unitName))
+        internal UnitNotFoundException(string unitName) : base(string.Format(ErrorMessage, unitName))
         {
             UnitName = unitName;
         }
@@ -19,7 +19,7 @@ namespace Absa.Hire.Newbies.PowerConverter.API
         public string UnitName { get; private set; }
 
         [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
-        private UnknownUnitException(SerializationInfo info, StreamingContext context) : base(info, context)
+        private UnitNotFoundException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
             UnitName = info.GetString(UnitNameKey);
         }

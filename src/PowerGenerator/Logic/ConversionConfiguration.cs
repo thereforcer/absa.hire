@@ -12,9 +12,16 @@ namespace Absa.Hire.Newbies.PowerConverter.Logic
         }
 
         private readonly HashSet<ISimpleMapping> _maps = new();
+        private readonly HashSet<ConversionMappingRoute> _cache = new();
 
-        internal ConversionPath FindConversionPath(Unit source, Unit destination)
+        internal ConversionMappingRoute FindConversionPath(Unit source, Unit destination)
         {
+            var existingRoute = _cache.FirstOrDefault(i => i.Source.Equals(source) && i.Destination.Equals(destination));
+            if (existingRoute != null)
+            {
+                return existingRoute;
+            }
+
             var sourceCategory = source.Category;
             var destinationCategory = destination.Category;
             if (!sourceCategory.Equals(destinationCategory))
@@ -22,17 +29,30 @@ namespace Absa.Hire.Newbies.PowerConverter.Logic
                 throw new InvalidOperationException($"Cannot convert units in different categories ({sourceCategory} vs {destinationCategory}).");
             }
 
+            var route = InternalFindMappingRoute(source, destination);
+            _cache.Add(route);
+
+            return route;
+        }
+
+        private ConversionMappingRoute InternalFindMappingRoute(Unit source, Unit destination)
+        {
             var mappings = new List<ISimpleMapping>();
-            var lastMapping = InternalFindMapping(mappings, null, source, destination);
+            var lastMapping = InternalFindMappingRoute(mappings, null, source, destination);
             if (lastMapping != null)
             {
                 mappings.Insert(0, lastMapping);
             }
 
-            return ConversionPath.Create(mappings.AsReadOnly());
+            if (!mappings.Any())
+            {
+                throw new MappingNotFoundException(source.UnitName, destination.UnitName);
+            }
+
+            return ConversionMappingRoute.Create(mappings.AsReadOnly());
         }
 
-        private ISimpleMapping InternalFindMapping(IList<ISimpleMapping> mappings, List<ISimpleMapping> alreadyUsedMappings, Unit source, Unit destination)
+        private ISimpleMapping InternalFindMappingRoute(IList<ISimpleMapping> mappings, List<ISimpleMapping> alreadyUsedMappings, Unit source, Unit destination)
         {
             alreadyUsedMappings ??= new List<ISimpleMapping>();
 
@@ -46,7 +66,7 @@ namespace Absa.Hire.Newbies.PowerConverter.Logic
 
                 var copyAlreadyUsedMapping = alreadyUsedMappings.ToList();
                 copyAlreadyUsedMapping.Add(mapping);
-                var internalValue = InternalFindMapping(mappings, copyAlreadyUsedMapping, mapping.Destination, destination);
+                var internalValue = InternalFindMappingRoute(mappings, copyAlreadyUsedMapping, mapping.Destination, destination);
                 if (internalValue == null)
                 {
                     continue;

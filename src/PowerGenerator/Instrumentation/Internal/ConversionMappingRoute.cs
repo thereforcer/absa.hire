@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace Absa.Hire.Newbies.PowerConverter
 {
-    internal class ConversionPath : SimplifiedMapping
+    internal class ConversionMappingRoute : SimplifiedMapping
     {
-        private ConversionPath(Unit source, Unit destination, IReadOnlyCollection<ISimpleMapping> mappings) : base(source, destination, value => InternalConvert(value, mappings))
+        private ConversionMappingRoute(Unit source, Unit destination, IReadOnlyCollection<ISimpleMapping> mappings) : base(source, destination, value => InternalConvert(value, mappings))
         {
         }
 
@@ -21,21 +21,16 @@ namespace Absa.Hire.Newbies.PowerConverter
             return result;
         }
 
-        public static ConversionPath Create(IReadOnlyList<ISimpleMapping> mappings)
+        public static ConversionMappingRoute Create(IReadOnlyList<ISimpleMapping> mappings)
         {
             VerifyPath(mappings);
             var source = mappings.First().Source;
             var destination = mappings.Last().Destination;
-            return new ConversionPath(source, destination, mappings);
+            return new ConversionMappingRoute(source, destination, mappings);
         }
 
         private static void VerifyPath(IReadOnlyList<ISimpleMapping> mappings)
         {
-            if (!mappings.Any())
-            {
-                throw new InvalidOperationException("Conversion path doesn't contain any mapping.");
-            }
-
             if (mappings.Count >= 2)
             {
                 for (var i = 1; i <= mappings.Count - 1; i++)

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Absa.Hire.Newbies.PowerConverter.API;
 
 namespace Absa.Hire.Newbies.PowerConverter.Logic
 {
@@ -9,7 +8,7 @@ namespace Absa.Hire.Newbies.PowerConverter.Logic
     {
         internal ParserConfiguration()
         {
-            TextComparison = StringComparison.InvariantCultureIgnoreCase;
+            TextComparison = StringComparison.InvariantCulture;
             CultureInfo = System.Globalization.CultureInfo.InvariantCulture;
         }
 
@@ -24,13 +23,13 @@ namespace Absa.Hire.Newbies.PowerConverter.Logic
             _units.Add(unit);
         }
 
-        /// <exception cref="UnknownUnitException"/>
+        /// <exception cref="UnitNotFoundException"/>
         internal Unit FindUnitByText(string unitPhrase)
         {
             var unit = _units.FirstOrDefault(i => i.GetUnitNames().Any(j => string.Equals(j, unitPhrase, TextComparison)));
             if (unit == null)
             {
-                throw new UnknownUnitException(unitPhrase);
+                throw new UnitNotFoundException(unitPhrase);
             }
 
             return unit;

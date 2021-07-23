@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Absa.Hire.Newbies.Functions": {
+      "commandName": "Project",
+      "executablePath": "func",
+      "commandLineArgs": "start --functions ConvertV1 --port 9000"
+    }
+  }
+}

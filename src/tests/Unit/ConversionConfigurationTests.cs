@@ -1,7 +1,7 @@
 ﻿using System;
-using Absa.Hire.Newbies.PowerConverter.API;
-using Absa.Hire.Newbies.PowerConverter.Primitives.Units.ImperialUnits;
-using Absa.Hire.Newbies.PowerConverter.Primitives.Units.SI;
+using Absa.Hire.Newbies.PowerConverter.Primitives.Units.Length.ImperialUnits;
+using Absa.Hire.Newbies.PowerConverter.Primitives.Units.Length.SI;
+using Absa.Hire.Newbies.PowerConverter.Primitives.Units.TimeBased;
 using Xunit;
 
 namespace Absa.Hire.Newbies.PowerConverter.UnitTests
