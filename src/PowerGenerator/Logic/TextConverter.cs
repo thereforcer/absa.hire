@@ -26,7 +26,7 @@ namespace Absa.Hire.Newbies.PowerConverter.Logic
         }
 
         /// <exception cref="UnitNotFoundException"/>
-        private (decimal value, Unit unit) ParseInput(string input)
+        private(decimal value, Unit unit) ParseInput(string input)
         {
             var tokens = input.Split(new[] {" "}, StringSplitOptions.RemoveEmptyEntries).ToList();
             if (tokens.Count != 2)
