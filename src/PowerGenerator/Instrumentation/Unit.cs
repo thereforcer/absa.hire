@@ -9,13 +9,13 @@ namespace Absa.Hire.Newbies.PowerConverter
     {
         protected Unit(Guid unitId, string unitName, Category category)
         {
-            _unitId = unitId;
+            UnitId = unitId;
             UnitName = unitName;
             Category = category;
         }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private readonly Guid _unitId;
+        internal Guid UnitId { get; }
 
         public string UnitName { get; }
 
@@ -50,7 +50,7 @@ namespace Absa.Hire.Newbies.PowerConverter
                 return true;
             }
 
-            return _unitId.Equals(other._unitId) && Equals(Category, other.Category);
+            return UnitId.Equals(other.UnitId) && Equals(Category, other.Category);
         }
 
         public override bool Equals(object obj)
@@ -77,7 +77,7 @@ namespace Absa.Hire.Newbies.PowerConverter
         {
             unchecked
             {
-                return (_unitId.GetHashCode() * 397) ^ (Category != null ? Category.GetHashCode() : 0);
+                return (UnitId.GetHashCode() * 397) ^ (Category != null ? Category.GetHashCode() : 0);
             }
         }
     }

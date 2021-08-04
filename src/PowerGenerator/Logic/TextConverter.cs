@@ -20,7 +20,18 @@ namespace Absa.Hire.Newbies.PowerConverter.Logic
         public string Convert(string input, string expectedUnit)
         {
             var(value, sourceUnit) = ParseInput(input);
-            var destinationUnit = _configuration.FindUnitByText(expectedUnit);
+            var destinationUnit = _configuration.FindUnitByText(expectedUnit, false);
+
+            if (sourceUnit is SIUnit sourceSIUnit)
+            {
+                value = sourceSIUnit.Correlate(value);
+            }
+
+            if (destinationUnit is SIUnit destinationSIUnit)
+            {
+                value = destinationSIUnit.Correlate(value);
+            }
+
             var result = _converter.Convert(value, destinationUnit, sourceUnit);
             return $"{result.ToString(_configuration.CultureInfo)} {destinationUnit.UnitName}";
         }
@@ -39,7 +50,7 @@ namespace Absa.Hire.Newbies.PowerConverter.Logic
                 throw new FormatException($"Value \"{tokens[0]}\" must be a number.");
             }
 
-            var unit = _configuration.FindUnitByText(tokens[1].Trim());
+            var unit = _configuration.FindUnitByText(tokens[1].Trim(), true);
             return (value, unit);
         }
     }

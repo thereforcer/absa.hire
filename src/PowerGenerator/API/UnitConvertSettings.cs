@@ -10,10 +10,8 @@ namespace Absa.Hire.Newbies.PowerConverter
             Parser = new ParserConfiguration();
             Parser.AddUnit(Feet);
             Parser.AddUnit(Inch);
-            Parser.AddUnit(KiloInch);
             Parser.AddUnit(Yard);
             Parser.AddUnit(Meter);
-            Parser.AddUnit(Kilometer);
             Parser.AddUnit(Second);
             Parser.AddUnit(Minute);
             Parser.AddUnit(Hour);
@@ -28,10 +26,8 @@ namespace Absa.Hire.Newbies.PowerConverter
 
             // some basic default conversions
             Conversion = new ConversionConfiguration();
-            Conversion.AddMapping(new KilometerToMeterMapping());
             Conversion.AddMapping(new InchToFeetMapping());
             Conversion.AddMapping(new InchToMeterMapping());
-            Conversion.AddMapping(new KiloInchToInchMapping());
             Conversion.AddMapping(new HourToMinuteMapping());
             Conversion.AddMapping(new MinuteToSecondMapping());
             Conversion.AddMapping(new KiloByteToByteMapping());
